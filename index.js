@@ -1,12 +1,22 @@
+//External Node-modules for the project
 const express=require('express');
-const https = require('https');
 const bodyParser=require('body-parser');
 
+//Native Node-modules
+const https = require('https');
+
+//App-gateway
 var app=express();
+
+//Using External Modules/packages
 app.use(bodyParser.urlencoded({extended:true}));
+
+//GET route-handler for the home page
 app.get("/",function(req,res){
 res.sendFile(__dirname+"/index.html");
 });
+
+//POST route-handler for the home page
 app.post("/",function(req,res){
   var city_name=req.body.Name_Of_City;
   var api_key= "2f22f0e638666852dfef07f8479f2b4f";
@@ -30,8 +40,7 @@ app.post("/",function(req,res){
 });
 
 
-
-
+//Running on local host
 app.listen(3000,function(){
   console.log("Weather App is Running");
 });
